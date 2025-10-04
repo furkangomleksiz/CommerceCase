@@ -16,7 +16,8 @@ function App() {
   const fetchProducts = async () => {
     try {
       setLoading(true)
-      const response = await axios.get('http://localhost:8080/api/products')
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080'
+      const response = await axios.get(`${apiUrl}/api/products`)
       setProducts(response.data)
       setError(null)
     } catch (err) {
